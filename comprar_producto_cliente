@@ -1,0 +1,27 @@
+class Persona:
+    def __init__(self, nombre_persona):
+        self.nombre = nombre_persona
+
+class Cliente(Persona):
+    def __init__(self, nombre_cliente, saldo_cliente):
+        self.nombre = nombre_cliente
+        self.saldo = saldo_cliente
+
+class Producto:
+    def __init__(self, nombre_producto, precio_producto):
+        self.nombre = nombre_producto
+        self.precio = precio_producto
+
+def comprar_producto_cliente(cliente, producto, uds):
+    total = producto.precio * uds
+    if cliente.saldo >= total:
+        cliente.saldo -= total
+        print(f"El cliente con nombre {cliente.nombre} ha comprado el producto con nombre {producto.nombre} por un precio unitario de {producto.precio} y un total de {uds} unidades.")
+        print(f"Saldo restante: {cliente.saldo}€")
+    else:
+        print(f"{cliente.nombre} no tiene saldo suficiente para comprar {uds} unidades de {producto.nombre}.")
+
+cliente1 = Cliente("Claudia", 50)
+producto1 = Producto("Vestido", 15)
+
+comprar_producto_cliente(cliente1, producto1, 2)
